@@ -1,0 +1,111 @@
+.content {
+  position: relative;
+  width: 100%;
+
+  @media screen and (max-width: 767px) {
+    padding: 20px 0 40px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 60px 0;
+  }
+}
+
+.gallery {
+  display: grid;
+  justify-content: center;
+  list-style: none;
+  margin: 0 auto;
+
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 280px;
+    grid-auto-rows: 443px;
+    gap: 20px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    grid-template-columns: 336px 336px;
+    grid-auto-rows: 495px;
+    grid-gap: 32px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    grid-template-columns: 395px 395px 395px;
+    grid-auto-rows: 634px;
+    grid-gap: 32px 16px;
+  }
+
+  &__card {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media screen and (max-width: 1279px) {
+      font-size: 12px;
+      line-height: 1.33;
+    }
+
+    @media screen and (min-width: 1280px) {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+  }
+
+  &__image {
+    flex: 1;
+    object-fit: cover;
+    border-radius: 5px;
+
+    @media screen and (max-width: 767px) {
+      margin-bottom: 10px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      margin-bottom: 8px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__data {
+    display: inherit;
+    flex-direction: inherit;
+  }
+
+  &__name {
+    text-transform: uppercase;
+  }
+
+  &__stats {
+    display: inherit;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    color: $main--accent;
+  }
+
+  &__rating {
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 20px;
+    margin-left: 8px;
+    border-radius: 5px;
+    color: $main--background;
+    background-color: $main--accent;
+    font-size: 12px;
+    line-height: 1.17;
+  }
+}
+
+// Modifiers
+
+.home {
+  & .gallery__rating {
+    display: none;
+  }
+}

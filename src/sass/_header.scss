@@ -1,8 +1,5 @@
 .header {
-  width: 100%;
-
   color: $main--background;
-  background-color: $main--text;
   background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.56),
@@ -14,13 +11,13 @@
 
   @media screen and (max-width: 767px) {
     min-height: 230px;
-    padding: 40px 20px;
+    padding: 40px 20px 0;
     background-size: 100% 100%;
   }
 
   @media screen and (min-width: 768px) {
     min-height: 216px;
-    padding: 40px 32px;
+    padding: 40px 32px 0;
     background-size: 100% 200%;
   }
 }
