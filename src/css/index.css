@@ -32,6 +32,10 @@ a {
   color: inherit;
 }
 
+ul {
+  list-style: none;
+}
+
 .button {
   display: block;
   text-align: center;
@@ -319,7 +323,6 @@ a {
 .gallery {
   display: grid;
   justify-content: center;
-  list-style: none;
   margin: 0 auto;
 }
 @media screen and (max-width: 767px) {
@@ -411,7 +414,6 @@ a {
 }
 
 .template {
-  position: relative;
   border-radius: 5px;
   width: 100%;
   height: 100%;
@@ -439,16 +441,219 @@ a {
 }
 
 .overlay {
+  display: none;
   z-index: 5;
   position: fixed;
+  overflow-y: auto;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  padding: 150px 0 60px;
   background-color: rgba(0, 0, 0, 0.25);
 }
-.overlay.hidden {
-  display: none;
+
+.modal {
+  position: relative;
+  background-color: #fff;
+}
+@media screen and (max-width: 767px) {
+  .modal {
+    width: 280px;
+    padding: 48px 20px 40px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .modal {
+    width: 704px;
+    padding: 40px 36px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .modal {
+    width: 806px;
+    padding: 40px 12px;
+  }
+}
+.modal__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  background: #000;
+  -webkit-mask-image: url(../img/close.svg);
+          mask-image: url(../img/close.svg);
+}
+.modal__content {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.modal__media {
+  display: inherit;
+  flex-direction: column;
+}
+@media screen and (max-width: 767px) {
+  .modal__media {
+    width: 240px;
+    height: 357px;
+    margin-bottom: 20px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .modal__media {
+    width: 264px;
+    height: 374px;
+    margin-right: 68px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .modal__media {
+    width: 375px;
+    height: 478px;
+    margin-right: 16px;
+  }
+}
+.modal__poster {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+}
+.modal__details {
+  display: inherit;
+  flex-direction: column;
+  width: 391px;
+  gap: 20px;
+}
+@media screen and (max-width: 767px) {
+  .modal__details {
+    width: 240px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .modal__details {
+    width: 260px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .modal__details {
+    width: 391px;
+  }
+}
+.modal__title {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+@media screen and (max-width: 1279px) {
+  .modal__title {
+    font-size: 20px;
+    line-height: 1.15;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .modal__title {
+    font-size: 30px;
+    line-height: 1.17;
+  }
+}
+.modal__stats {
+  display: inherit;
+  flex-direction: column;
+  gap: 8px;
+}
+.modal__stats li {
+  display: inherit;
+}
+@media screen and (max-width: 1279px) {
+  .modal__stats li {
+    gap: 40px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .modal__stats li {
+    gap: 80px;
+  }
+}
+.modal__stats li span:first-child {
+  width: 70px;
+}
+.modal .data {
+  color: #8c8c8c;
+}
+.modal .value {
+  display: inherit;
+}
+@media screen and (max-width: 767px) {
+  .modal .value {
+    max-width: 130px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .modal .value {
+    max-width: 150px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .modal .value {
+    max-width: 241px;
+  }
+}
+.modal .value__title {
+  text-transform: uppercase;
+}
+.modal .separator {
+  margin: 0 3px;
+}
+.modal .rating {
+  display: inherit;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 16px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #ff6b08;
+  font-size: 12px;
+  line-height: 1.17;
+}
+.modal .rating__votes {
+  color: #000;
+  background-color: #f7f7f7;
+}
+.modal__description {
+  display: inherit;
+  flex-direction: column;
+  gap: 8px;
+}
+.modal__text {
+  line-height: 1.67;
+}
+.modal__buttons {
+  display: flex;
+  gap: 15px;
+}
+@media screen and (min-width: 1280px) {
+  .modal__buttons {
+    padding-left: 24px;
+  }
+}
+.modal__buttons button {
+  width: 136px;
+  height: 44px;
+}
+
+.modal-on {
+  overflow-y: hidden;
+}
+.modal-on .overlay {
+  display: flex;
 }
 
 .footer {
