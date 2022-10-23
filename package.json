@@ -4,7 +4,7 @@
   "description": "Group HW2 Markup Placeholder",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /goit-js-hw-11/"
+    "build": "parcel build src/*.html --public-url /group-hw2-placeholder/"
   },
   "repository": {
     "type": "git",
