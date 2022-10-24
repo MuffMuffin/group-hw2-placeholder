@@ -116,20 +116,25 @@ refs.modalQueue.addEventListener("click", () => {
 
 // Lazy load below. It currently doesn't work as Parcel works
 // in mysterious ways. Will work with external image links though.
+// Meanwhile the main script has been commented out.
 
 function lazyLoad() {
   refs.galleryCards = document.querySelectorAll(".gallery__card");
 
   var firstItem = document.querySelector(".gallery__card");
+  var itemGap = [
+    ...document.defaultView.getComputedStyle(firstItem.parentElement).gap,
+  ];
+  itemGap = parseInt(`${itemGap[0]}${itemGap[1]}`);
   var itemSize = `${
-    Math.ceil(firstItem.getBoundingClientRect().height) + 32
+    Math.ceil(firstItem.getBoundingClientRect().height) + itemGap
   }px`;
 
   const onEntry = (observerEntries) => {
     observerEntries.forEach(({ target, isIntersecting }) => {
       if (isIntersecting) {
-        let source = target.firstElementChild.dataset.source;
-        target.firstElementChild.src = source;
+        // let source = target.firstElementChild.dataset.source;
+        // target.firstElementChild.src = source;
       }
     });
   };
@@ -143,3 +148,5 @@ function lazyLoad() {
     observer.observe(element);
   });
 }
+
+lazyLoad();
