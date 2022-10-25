@@ -208,9 +208,9 @@ global.simulator = {
           <img
             src=""
             data-source="https://image.tmdb.org/t/p/original/fGfZHAhpJP6irMF1dHHtbu0RfXa.jpg"
-            data-page="homepage"
+            data-page="https://www.themoviedb.org/tv/64480"
             alt="Servant of the People"
-            class="https://www.themoviedb.org/tv/64480"
+            class="gallery__image"
           />
           <div class="gallery__data">
             <div class="gallery__name">Servant of the People</div>
