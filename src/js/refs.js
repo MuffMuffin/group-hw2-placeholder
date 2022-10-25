@@ -11,4 +11,5 @@ export const refs = {
   modalClose: document.querySelector(".modal__close"),
   modalWatch: document.querySelector(".modal__watch"),
   modalQueue: document.querySelector(".modal__queue"),
+  maxPage: 20,
 };

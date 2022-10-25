@@ -150,3 +150,7 @@ function lazyLoad() {
 }
 
 lazyLoad();
+
+// carousel
+
+document.querySelector(".");
