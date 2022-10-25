@@ -54,14 +54,12 @@ refs.queueButton.addEventListener("click", () => {
 
 function modalListener() {
   const modalOpener = (event) => {
-    console.dir(event.currentTarget.querySelector("img").dataset.page);
-
-    // let dataSource = event.currentTarget.querySelector("img").dataset.page;
+    let dataSource = event.currentTarget.querySelector("img").dataset.page;
     document.body.classList.toggle("modal-on");
 
     // Modal population function goes here. Don't forget the spinner.
 
-    // console.log("Get your link to data for modal here: " + dataSource);
+    console.log("Get your link to data for modal here: " + dataSource);
     modalCloser();
   };
 
