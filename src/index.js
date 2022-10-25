@@ -1,4 +1,9 @@
 import { refs } from "./js/refs";
+import {
+  carouselListener,
+  carouselResizing,
+  carouselRender,
+} from "./js/carousel";
 
 // Initial gallery population function goes here
 
@@ -165,3 +170,11 @@ function lazyLoad() {
 }
 
 lazyLoad();
+
+// Pages selector functions
+
+carouselListener();
+
+carouselResizing();
+
+carouselRender(refs.pageCurrent, refs.pageMax);
