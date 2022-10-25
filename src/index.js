@@ -13,7 +13,7 @@ refs.logo.addEventListener("click", (event) => {
   event.preventDefault();
   document.body.className = "home watched";
 
-  //Gallery population function for this page goes here
+  simulator.pageSimulator(); //Gallery population function for this page goes here
 
   console.log("Populating Home page");
 });
@@ -22,7 +22,7 @@ refs.homeButton.addEventListener("click", (event) => {
   event.preventDefault();
   document.body.classList.replace("library", "home");
 
-  //Gallery population function for this page goes here
+  simulator.pageSimulator(); //Gallery population function for this page goes here
 
   console.log("Populating Home page");
 });
@@ -31,7 +31,7 @@ refs.libraryButton.addEventListener("click", (event) => {
   event.preventDefault();
   document.body.classList.replace("home", "library");
 
-  //Gallery population function for this page goes here
+  simulator.pageSimulator(); //Gallery population function for this page goes here
 
   console.log("Populating Library Watched page");
 });
@@ -39,7 +39,7 @@ refs.libraryButton.addEventListener("click", (event) => {
 refs.watchedButton.addEventListener("click", () => {
   document.body.classList.replace("queue", "watched");
 
-  //Gallery population function for this page goes here
+  simulator.pageSimulator(); //Gallery population function for this page goes here
 
   console.log("Populating Library Watched page");
 });
@@ -47,7 +47,7 @@ refs.watchedButton.addEventListener("click", () => {
 refs.queueButton.addEventListener("click", () => {
   document.body.classList.replace("watched", "queue");
 
-  //Gallery population function for this page goes here
+  simulator.pageSimulator(); //Gallery population function for this page goes here
 
   console.log("Populating Library Queue page");
 });
@@ -57,7 +57,7 @@ function modalListener() {
     let dataSource = event.currentTarget.querySelector("img").dataset.page;
     document.body.classList.toggle("modal-on");
 
-    // Modal population function goes here. Don't forget the spinner.
+    simulator.modalSimulator(); // Modal population function goes here. Don't forget the spinner.
 
     console.log("Get your link to data for modal here: " + dataSource);
     modalCloser();
@@ -142,10 +142,12 @@ function lazyLoad() {
   refs.galleryCards = document.querySelectorAll(".gallery__card");
 
   var firstItem = document.querySelector(".gallery__card");
+
   var itemGap = [
     ...document.defaultView.getComputedStyle(firstItem.parentElement).gap,
   ];
   itemGap = parseInt(`${itemGap[0]}${itemGap[1]}`);
+
   var itemSize = `${
     Math.ceil(firstItem.getBoundingClientRect().height) + itemGap
   }px`;
@@ -153,8 +155,8 @@ function lazyLoad() {
   const onEntry = (observerEntries) => {
     observerEntries.forEach(({ target, isIntersecting }) => {
       if (isIntersecting) {
-        // let source = target.firstElementChild.dataset.source;
-        // target.firstElementChild.src = source;
+        let source = target.firstElementChild.dataset.source;
+        target.firstElementChild.src = source;
       }
     });
   };
@@ -178,3 +180,61 @@ carouselListener();
 carouselResizing();
 
 carouselRender(refs.pageCurrent, refs.pageMax);
+
+// Simulator stuff
+
+global.simulator = {
+  pageSimulator() {
+    let i = null;
+
+    refs.gallery.innerHTML = "";
+    i = 0;
+
+    do {
+      refs.gallery.insertAdjacentHTML(
+        "beforeend",
+        `<li class="template"></li>`
+      );
+      i += 1;
+    } while (i < 24);
+
+    setTimeout(() => {
+      i = 0;
+      refs.gallery.innerHTML = "";
+      do {
+        refs.gallery.insertAdjacentHTML(
+          "beforeend",
+          `<li class="gallery__card">
+          <img
+            src=""
+            data-source="https://image.tmdb.org/t/p/original/fGfZHAhpJP6irMF1dHHtbu0RfXa.jpg"
+            data-page="homepage"
+            alt="Servant of the People"
+            class="https://www.themoviedb.org/tv/64480"
+          />
+          <div class="gallery__data">
+            <div class="gallery__name">Servant of the People</div>
+            <div class="gallery__stats">
+              <p class="gallery__details">Documentary | 2015</p>
+              <div class="gallery__rating">9.5</div>
+            </div>
+          </div>
+        </li>
+          `
+        );
+        i += 1;
+      } while (i < 24);
+      lazyLoad();
+      modalListener();
+    }, 1000);
+  },
+  modalSimulator() {
+    refs.modalBackground.classList.add("loading");
+
+    setTimeout(() => {
+      refs.modalBackground.classList.remove("loading");
+    }, 1000);
+  },
+};
+
+simulator.pageSimulator();

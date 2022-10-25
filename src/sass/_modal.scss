@@ -1,5 +1,6 @@
 .overlay {
-  display: none;
+  pointer-events: none;
+  opacity: 0;
   z-index: 5;
   position: fixed;
   overflow-y: auto;
@@ -7,6 +8,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgba($color: #000000, $alpha: 0.25);
@@ -247,7 +249,8 @@
 .modal-on {
   overflow-y: hidden;
   & .overlay {
-    display: flex;
+    pointer-events: all;
+    opacity: 1;
 
     &.loading {
       & .modal__spinner {
