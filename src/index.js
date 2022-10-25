@@ -85,6 +85,7 @@ function modalCloser() {
     if (event.target == event.currentTarget) {
       document.body.classList.toggle("modal-on");
       refs.modalClose.removeEventListener("click", crossClose);
+      window.removeEventListener("keydown", modalEsc);
       refs.modalBackground.removeEventListener("click", backgroundClose);
     }
   };
@@ -92,12 +93,26 @@ function modalCloser() {
   const crossClose = (event) => {
     document.body.classList.toggle("modal-on");
     refs.modalBackground.removeEventListener("click", backgroundClose);
+    window.removeEventListener("keydown", modalEsc);
     refs.modalClose.removeEventListener("click", crossClose);
+  };
+
+  const modalEsc = (event) => {
+    if (event.key === "Escape") {
+      if (document.body.classList.contains("modal-on")) {
+        document.body.classList.toggle("modal-on");
+        refs.modalBackground.removeEventListener("click", backgroundClose);
+        refs.modalClose.removeEventListener("click", crossClose);
+        window.removeEventListener("keydown", modalEsc);
+      }
+    }
   };
 
   refs.modalBackground.addEventListener("click", backgroundClose);
 
   refs.modalClose.addEventListener("click", crossClose);
+
+  window.addEventListener("keydown", modalEsc);
 }
 
 // And here are modal button listeners that will stay on
@@ -150,7 +165,3 @@ function lazyLoad() {
 }
 
 lazyLoad();
-
-// carousel
-
-document.querySelector(".");
