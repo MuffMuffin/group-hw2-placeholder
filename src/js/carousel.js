@@ -118,7 +118,9 @@ export function carouselRender(page, totalPages) {
           break;
 
         case totalPages - page < 5:
-          cutOffLeft = numberArray.indexOf(page - 2);
+          let toPad = 4 - (totalPages - page);
+          console.log(toPad);
+          cutOffLeft = numberArray.indexOf(page - (2 + toPad));
           numberArray.splice(0, cutOffLeft);
           carouselContent.insertAdjacentHTML(
             "beforeend",
